@@ -3,7 +3,7 @@ def selecting_action():
     if selected == "c":
         coding_the_number()
     if selected == "d":
-       ...
+       decoding_the_number()
 
 def coding_the_number():
     dictionary_positions = {}
@@ -30,7 +30,7 @@ def coding_the_number():
         code_lenght += 1
         added_0 = True
 
-    #print("Dictionary before math " + str(dictionary_positions) + ",added 0: " + str(added_0) + ", lenght (with 0) = "+ str(code_lenght))
+    print("Dictionary before math " + str(dictionary_positions) + ",added 0: " + str(added_0) + ", lenght = "+ str(code_lenght))
     position = 0
     code_lenght_copy = code_lenght + 1
     while code_lenght_copy != 1:
@@ -39,7 +39,7 @@ def coding_the_number():
         #print(answer)
         position += 1
         code_lenght_copy -= 1
-    #print("Dictionary after math " + str(c_dictionary_positions))
+    print("Dictionary after math " + str(c_dictionary_positions))
 
     from_end = code_lenght - 1
     from_start = 0
@@ -57,5 +57,43 @@ def coding_the_number():
             print("I hope I was usefull, Goodbye!")
             exit()
 
-print("Welcome to 84´s (de)coder v 0.1")
+def decoding_the_number():
+    d_dictionary_positions = {}
+    rp_dictionary_positions = {}
+    position = 0
+    start_n = 0
+    end_n = 3
+
+    decode = input("Enter number you want to decode: ")
+    decode_lenght = int(len(decode) / 3)
+    
+    while len(d_dictionary_positions) != decode_lenght:
+        d_dictionary_positions[position] = decode[start_n:end_n]
+        position += 1
+        start_n += 3
+        end_n += 3
+    #print("Unsorted numbers: " + str(d_dictionary_positions))
+
+    from_end = int(decode_lenght) - 1
+    from_start = 0
+    position = 0
+    while len(d_dictionary_positions) != len(rp_dictionary_positions):
+        rp_dictionary_positions[from_end] = d_dictionary_positions[position]
+        position += 1
+        rp_dictionary_positions[from_start] = d_dictionary_positions[position]
+        position += 1
+        from_end -= 1
+        from_start += 1
+    #print("Sorted numbers: " + str(rp_dictionary_positions))
+
+    decode_lenght_copy = decode_lenght + 1
+    position = 0
+    for math in range(decode_lenght):
+        decoded_answer = (((int(rp_dictionary_positions[position]) - 123) / decode_lenght_copy) - 5) ** 0.5
+        decode_lenght_copy -=1
+        position += 1
+        print(decoded_answer)
+
+
+print("Welcome to 84´s (de)coder v 1.1")
 selecting_action()
