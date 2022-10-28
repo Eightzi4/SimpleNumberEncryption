@@ -1,9 +1,18 @@
+print("Welcome to 84´s (de)coder v 1.1")
 def selecting_action():
     selected = input("Plese select an action: (c/d) ")
     if selected == "c":
         coding_the_number()
     if selected == "d":
        decoding_the_number()
+
+def run_again():
+    again = input("(yes/no) ")
+    if again == "yes":
+            selecting_action()
+    else:
+            print("I hope I was usefull, Goodbye!")
+            exit()
 
 def coding_the_number():
     dictionary_positions = {}
@@ -30,7 +39,7 @@ def coding_the_number():
         code_lenght += 1
         added_0 = True
 
-    print("Dictionary before math " + str(dictionary_positions) + ",added 0: " + str(added_0) + ", lenght = "+ str(code_lenght))
+    #print("Dictionary before math " + str(dictionary_positions) + ",added 0: " + str(added_0) + ", lenght = "+ str(code_lenght))
     position = 0
     code_lenght_copy = code_lenght + 1
     while code_lenght_copy != 1:
@@ -39,7 +48,7 @@ def coding_the_number():
         #print(answer)
         position += 1
         code_lenght_copy -= 1
-    print("Dictionary after math " + str(c_dictionary_positions))
+    #print("Dictionary after math " + str(c_dictionary_positions))
 
     from_end = code_lenght - 1
     from_start = 0
@@ -50,12 +59,7 @@ def coding_the_number():
         from_end -= 1
         
     print("You number has been coded to: " + mixed_positions  + "\nAgain?")
-    again = input("(yes/no) ")
-    if again == "yes":
-            selecting_action()
-    else:
-            print("I hope I was usefull, Goodbye!")
-            exit()
+    run_again()
 
 def decoding_the_number():
     d_dictionary_positions = {}
@@ -86,14 +90,17 @@ def decoding_the_number():
         from_start += 1
     #print("Sorted numbers: " + str(rp_dictionary_positions))
 
+    decoded = ""
     decode_lenght_copy = decode_lenght + 1
     position = 0
     for math in range(decode_lenght):
-        decoded_answer = (((int(rp_dictionary_positions[position]) - 123) / decode_lenght_copy) - 5) ** 0.5
+        decoded_answer = int((((int(rp_dictionary_positions[position]) - 123) / decode_lenght_copy) - 5) ** 0.5)
         decode_lenght_copy -=1
         position += 1
-        print(decoded_answer)
+        decoded += str(decoded_answer)
 
 
-print("Welcome to 84´s (de)coder v 1.1")
+    print("You number has been decoded to: " + str(decoded)  + " (there may be extra '0' at the end of the number)" + "\nAgain?")
+    run_again()
+
 selecting_action()
