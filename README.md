@@ -1,3 +1,4 @@
 # SimplePythonNumberCoder
-Can code (and decode) given number.
-This is my first code, that actually does something, it will do the certain math with every number separated and change it´s order, that can be then decoded back to original number. I don´t know if this is usefull for anything, the main thing was to practice Python, because I am still just a begginer. (Project is not finished yet, still working on it!)
+Now fully working!
+You simply put in a number, it will do certain math with it and change it´s order. Now the number is "coded" and it can be "decoded" back doing exactly the same, just in reverse.
+I don´t know if this is usefull for anything, the main thing for me was to train Python.
