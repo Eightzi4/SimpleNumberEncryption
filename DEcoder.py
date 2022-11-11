@@ -37,16 +37,15 @@ def coding_the_number():
 
     #print("Dictionary before math " + str(dictionary_positions) + ", lenght = "+ str(code_lenght))
     position = 0
-    code_lenght_copy = code_lenght + 1
-    while code_lenght_copy != 1:
-        answer = (dictionary_positions[position]**2+5)*code_lenght_copy+123
+    while code_lenght != 0:
+        answer = (dictionary_positions[position]**2+5)*code_lenght+123
         c_dictionary_positions[position] = answer
         #print(answer)
         position += 1
-        code_lenght_copy -= 1
+        code_lenght -= 1
     #print("Dictionary after math " + str(c_dictionary_positions))
 
-    from_end = code_lenght - 1
+    from_end = len(code) - 1
     from_start = 0
     mixed_positions = ""
     while from_end >= from_start:
@@ -56,7 +55,7 @@ def coding_the_number():
         from_start += 1
         from_end -= 1
         
-    print("You number has been coded to: " + mixed_positions  + "\nAgain?")
+    print("You number has been coded to: " + "\u001b[33m" + mixed_positions + "\u001b[37m" + "\nAgain?")
     run_again()
 
 def decoding_the_number():
@@ -90,15 +89,14 @@ def decoding_the_number():
     #print("Sorted numbers: " + str(rp_dictionary_positions))
 
     decoded = ""
-    decode_lenght_copy = decode_lenght + 1
     position = 0
     for math in range(decode_lenght):
-        decoded_answer = int((((int(rp_dictionary_positions[position]) - 123) / decode_lenght_copy) - 5) ** 0.5)
-        decode_lenght_copy -=1
+        decoded_answer = int((((int(rp_dictionary_positions[position])-123)/decode_lenght)-5)**0.5)
+        decode_lenght -=1
         position += 1
         decoded += str(decoded_answer)
 
-    print("You number has been decoded to: " + str(decoded) + "\nAgain?")
+    print("You number has been decoded to: " + "\u001b[33m" + str(decoded) + "\u001b[37m" + "\nAgain?")
     run_again()
 
 selecting_action()
