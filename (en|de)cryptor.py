@@ -1,23 +1,23 @@
-print("Welcome to 84´s (de)coder v 1.2\nType 'c' for coding or 'd' for decoding")
-def selecting_action():
-    selected = input("Select an action: (c/d) ")
-    if selected == "c":
-        coding_the_number()
-    if selected == "d":
-       decoding_the_number()
+print("Welcome to 84´s number (en/de)cryptor v 1.2\nType 'c' for encryption or 'd' for decryption")
+def select_action():
+    selection = input("Select an action: (c/d) ")
+    if selection == "c":
+        number_encryption()
+    if selection == "d":
+       number_decryption()
     else:
         print("Invalid input")
-        selecting_action()
+        select_action()
 
 def run_again():
     again = input("(yes/no) ")
     if again == "yes":
-            selecting_action()
+            select_action()
     else:
             print("I hope I was usefull, Goodbye!")
             exit()
 
-def coding_the_number():
+def number_encryption():
     dictionary_positions = {}
     c_dictionary_positions = {}
     looking_for_number = 0
@@ -55,10 +55,10 @@ def coding_the_number():
         from_start += 1
         from_end -= 1
         
-    print("You number has been coded to: " + "\u001b[33m" + mixed_positions + "\u001b[37m" + "\nAgain?")
+    print("You number has been encrypted to: " + "\u001b[33m" + mixed_positions + "\u001b[37m" + "\nAgain?")
     run_again()
 
-def decoding_the_number():
+def number_decryption():
     d_dictionary_positions = {}
     rp_dictionary_positions = {}
     position = 0
@@ -88,15 +88,15 @@ def decoding_the_number():
         from_start += 1
     #print("Sorted numbers: " + str(rp_dictionary_positions))
 
-    decoded = ""
+    decrypted = ""
     position = 0
     for math in range(decode_lenght):
         decoded_answer = int((((int(rp_dictionary_positions[position])-123)/decode_lenght)-5)**0.5)
         decode_lenght -=1
         position += 1
-        decoded += str(decoded_answer)
+        decrypted += str(decoded_answer)
 
-    print("You number has been decoded to: " + "\u001b[33m" + str(decoded) + "\u001b[37m" + "\nAgain?")
+    print("You number has been decrypted to: " + "\u001b[33m" + str(decrypted) + "\u001b[37m" + "\nAgain?")
     run_again()
 
-selecting_action()
+select_action()
